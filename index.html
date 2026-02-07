@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Counting Website</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class ="title_container">
+        <h1 class="title">Card Counting Website</h1>
+        <p>This is a card counting practice website.</p>
+        <p> Counting cards is easy. Using the Hi-Lo method we can easily count cards in a game of blackjack by assigning values to cards and keeping a running count. In Hi-Lo we assign <b>+1</b> to <i>low cards</i> (2-6), we assign <b>0</b> to <i>middle cards</i> (7-9), and we assign <b>-1</b> to <i>high cards</i> (10-Ace).</p>
+    </div>
+    <div class="counting_game_container">
+    <div id="cards_container">
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+    <div id="buttons_container">
+        <div id="count">
+            <p></p>
+        </div>
+        <div id="reset">
+            <button id="reset_button">Reset</button>
+        </div>
+        <div id="next">
+            <button id="next_button">Next Cards</button>
+        </div>
+        <div id="change_deck_count">
+            <label for="deck_count">Deck Count:</label>
+            <input type="range" id="deck_count" name="deck_count" min="1" max="8" value="6">
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
