@@ -8,35 +8,109 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!--<meta http-equiv="refresh" content="2">-->
+
+    <script src="game_script.js"></script>
+    <script>
+        window.onload = function() {
+            StartGame();
+        }
+    </script>
+
 </head>
 <body>
+    <script>
+        function ShowRunningCount() {
+            var x = document.getElementById("running_count_show_img");
+            var y = document.getElementById("running_count_hide_img");
+            var z = document.getElementById("running_count_display");
+
+            x.style.display = "none";
+            y.style.display = "block";
+            z.style.display = "inline-flex";
+        }
+        function HideRunningCount() {
+            var x = document.getElementById("running_count_hide_img");
+            var y = document.getElementById("running_count_show_img");
+            var z = document.getElementById("running_count_display");
+            x.style.display = "none";
+            y.style.display = "block";
+            z.style.display = "none";
+        }
+
+        function ShowCardCount() {
+            var x = document.getElementById("card_count_show_img");
+            var y = document.getElementById("card_count_hide_img");
+            var z = document.getElementsByClassName("dealt_cards_ratio_display")[0];
+            x.style.display = "none";
+            y.style.display = "block";
+            z.style.display = "inline-flex";
+        }
+        function HideCardCount() {
+            var x = document.getElementById("card_count_hide_img");
+            var y = document.getElementById("card_count_show_img");
+            var z = document.getElementsByClassName("dealt_cards_ratio_display")[0];
+            x.style.display = "none";
+            y.style.display = "block";
+            z.style.display = "none";
+        }
+
+    </script>
+
     <div class ="title_container">
         <h1 class="title">Card Counting Website</h1>
         <p>This is a card counting practice website.</p>
         <p> Counting cards is easy. Using the Hi-Lo method we can easily count cards in a game of blackjack by assigning values to cards and keeping a running count. In Hi-Lo we assign <b>+1</b> to <i>low cards</i> (2-6), we assign <b>0</b> to <i>middle cards</i> (7-9), and we assign <b>-1</b> to <i>high cards</i> (10-Ace).</p>
+        <p> The running count helps us determine the likelihood of favorable cards remaining in the deck. if the running count is positive the deck is loaded with high cards, which is advantageous for the player. Conversely if the running count is low then the deck is loaded with low cards, which is advantageous for the dealer.</p>
     </div>
     <div class="counting_game_container">
-    <div id="cards_container">
-        <div class="card"></div>
-        <div class="card"></div>
-    </div>
-    <div id="buttons_container">
-        <div id="count">
-            <p></p>
-        </div>
-        <div id="reset">
-            <button id="reset_button">Reset</button>
-        </div>
-        <div id="next">
-            <button id="next_button">Next Cards</button>
-        </div>
-        <div id="change_deck_count">
-            <label for="deck_count">Deck Count:</label>
-            <input type="range" id="deck_count" name="deck_count" min="1" max="8" value="6">
-        </div>
+        <div id="cards_container"></div>
+        <div class="buttons_container">
+            <div id="count">
+                <p>Running Count:</p>
+                <output id="running_count_display">0</output>
+                <img class="running_count_button" id="running_count_hide_img" src="images/password_hide.svg" alt="Hide Count" onclick="HideRunningCount()">
 
-    </div>
+                <img class="running_count_button" id="running_count_show_img" src="images/password_show.svg" alt="Hide Count" onclick="ShowRunningCount()">
+            </div>
+            <div id="reset">
+                <button id="reset_button" onclick="StartGame()">Reset</button>
+            </div>
+            <div id="next">
+                <button id="next_button" onclick="NextCards()">Next Cards</button>
+            </div>
+            <div id="change_deck_count">
+                <label for="deck_count">Deck Count:</label>
+                <output for="deck_count" id="deck_count_display">2</output>
+                <input type="range" id="deck_count" name="deck_count" min="1" max="8" value="2">
+                <script>
+                    // Select the elements
+                    var slider = document.getElementById("deck_count");
+                    var output = document.getElementById("deck_count_display");
 
+                    // Display the default initial value
+                    output.innerHTML = slider.value;
+
+                    // Update the value as the user drags the slider
+                    slider.addEventListener("input", function() {
+                        output.innerHTML = this.value;
+                    });
+                </script>
+            </div>
+            <div id="number_of_cards">
+                <p>Number of Cards Dealt:</p>
+                <div class="dealt_cards_ratio_display">
+                    <output id="cards_dealt_display">0</output>
+                    <p>/</p>
+                    <output id="total_cards_display">104</output>
+                </div>
+                <img class="card_count_button" id="card_count_hide_img" src="images/password_hide.svg" alt="Hide Count" onclick="HideCardCount()">
+
+                <img class="card_count_button" id="card_count_show_img" src="images/password_show.svg" alt="Hide Count" onclick="ShowCardCount()">
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
