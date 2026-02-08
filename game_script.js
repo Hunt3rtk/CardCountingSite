@@ -52,6 +52,7 @@ function NextCards() {
         CalculateRunningCount(card);
     }
     UpdateRunningCount();
+    UpdateCardsDealt();
 }
 
 function DisplayCard(card) {
@@ -81,11 +82,16 @@ function GetDeckCount() {
     return parseInt(document.getElementById("deck_count").value);
 }
 
+function UpdateCardsDealt() {
+    document.getElementById("cards_dealt_display").textContent = 52 * GetDeckCount() - shoe.length;
+}
+
 function StartGame() {
-    let numberOfDecks = parseInt(document.getElementById("deck_count").value);
+    let numberOfDecks = GetDeckCount();
     runningCount = 0;
     ClearDisplayedCards();
     MakeShoe(numberOfDecks);
     UpdateRunningCount();
     UpdateShoeSize();
+    UpdateCardsDealt();
 }
